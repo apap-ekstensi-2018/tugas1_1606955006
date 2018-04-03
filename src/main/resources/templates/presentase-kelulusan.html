@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Kelulusan</title>
+    </head>
+    <head th:replace="fragments/fragment :: assets" />
+    <body>
+    <div th:replace="fragments/fragment :: header"></div>
+       	<h1>Presentase Kelulusan</h1>
+       	<div class="row">
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-4">
+                    <strong>Tahun</strong>
+                </div>
+                <div class="col-md-8">
+                    <label th:text="${tahun_masuk}"></label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <strong>Program Studi</strong>
+                </div>
+                <div class="col-md-8">
+                    <label th:text="${program_studi}"></label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <strong>Fakultas</strong>
+                </div>
+                <div class="col-md-8">
+                    <label th:text="${fakultas}"></label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <strong>Universitas</strong>
+                </div>
+                <div class="col-md-8">
+                    <label th:text="${universitas}"></label>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <h1 th:text="${presentase} + ' %'"></h1>
+            </div>
+            <div class="row">
+                <h6 th:text="${mhs_lulus} + ' dari ' + ${total_mhs} + ' Mahasiswa Telah Lulus'"></h6>
+            </div>
+        </div>
+    </div>
+       	
+    <div th:replace="fragments/fragment :: footer"></div>
+    </body>
+    
+    
+</html>
+

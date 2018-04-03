@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>View All Students</title>
+</head>
+<head th:replace="fragments/fragment :: assets" />
+<link rel="stylesheet" href="/DataTables-1.10.16/datatables.min.css" />
+	<script type="text/javascript" src="/DataTables-1.10.16/datatables.min.js"></script>
+   	<script type="text/javascript">
+	$(document).ready(function() {
+		$('#studentsTable').DataTable();
+	});
+	</script>
+    <body>
+    	<div th:replace="fragments/fragment :: header"></div>
+        <h5 th:text="'Lihat data Mahasiswa Program Studi ' + ${nama_prodi} + ', '
+	       	 + ${nama_fakultas} + ', ' + ${nama_universitas}"></h5>
+		<table id="studentsTable" class="display" style="width:100%">
+	        <!-- Header Table -->
+	       <thead>
+	             <tr>
+                    <th>No.</th>
+                    <th>NPM</th>
+                    <th>Nama</th>
+                    <th>Program Studi</th>
+                    <th>Tahun Masuk</th>
+                    <th>Jalur Masuk</th>
+                    <th>Detail Mahasiswa</th>
+                 </tr>
+	        </thead>
+	        <tbody>
+	            <tr th:each="mahasiswa,iterationStatus: ${mahasiswa2}">
+		            <td th:text="'.' + ${iterationStatus.count}"></td>
+			       	<td th:text="${mahasiswa.npm}"></td>
+                    <td th:text="${mahasiswa.nama}"></td>
+                    <td th:text="${mahasiswa.nama_prodi}"></td>
+                    <td th:text="${mahasiswa.tahun_masuk}"></td>
+                    <td th:text="${mahasiswa.jalur_masuk}"></td>
+                    <td><a th:href="'/mahasiswa?npm=' + ${mahasiswa.npm}">Lihat Detail</a></td>
+       			</tr>
+	        </tbody>
+    	</table>
+      <div th:replace="fragments/fragment :: footer"></div>
+    </body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Home</title>
+    </head>
+    <head th:replace="fragments/fragment :: assets" />
+    
+    <script type="text/javascript">
+	$(document).ready(function() {
+		$('#univ').change(
+	     function() {
+	         $.getJSON("/getFakultasbyUniv", {
+	             idUniv : $(this).val(),
+	             ajax : 'true'
+	         }, function(data) {
+	             var html = '<option value="">--SELECT--</option>';
+	             var len = data.length;
+	             for ( var i = 0; i < len; i++) {
+	                 html += '<option value="' + data[i].id + '">'
+	                         + data[i].namaFakultas + '</option>';
+	             }
+	             html += '</option>';
+	             $('#fakultas').html(html);
+	             $('#prodi').html('<option value="">--SELECT--</option>');
+	         });
+	     });
+		
+		$('#fakultas').change(
+	     function() {
+	         $.getJSON("/getProdibyFakultas", {
+	             idFakultas : $(this).val(),
+	             ajax : 'true'
+	         }, function(data) {
+	             var html = '<option value="">--SELECT--</option>';
+	             var len = data.length;
+	             for ( var i = 0; i < len; i++) {
+	                 html += '<option value="' + data[i].id + '">'
+	                         + data[i].namaProdi + '</option>';
+	             }
+	             html += '</option>';
+	             $('#prodi').html(html);
+	         });
+	     });
+	});
+	</script>
+    
+    <body>
+    <div th:replace="fragments/fragment :: header"></div>
+       	<h1>Presentase kelulusan</h1>
+       	
+       	<form action="/mahasiswa/cari" method="get">
+       		<div class="form-row">
+					<div class="form-group col-md-4">
+						<label for="univ">Universitas</label>
+						<select class="form-control" id="univ" name="univ" required="required">
+							<option value="">--SELECT--</option>
+							<option th:each="univ : ${listUniv}" th:value="${univ.id}" th:text="${univ.namaUniv}"></option>
+						</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label for="fakultas">Fakultas</label>
+						<select class="form-control" name="fakultas" id="fakultas" required="required">
+			                <option disabled="disabled" selected="selected" >--PLEASE SELECT UNIVERSITAS--</option>
+			            </select>
+					</div>
+					<div class="form-group col-md-4">
+						<label for="prodi">Program Studi</label>
+						<select class="form-control" name="prodi" id="prodi" required="required">
+			                <option disabled="disabled" selected="selected" >--PLEASE SELECT FAKULTAS--</option>
+			            </select>
+					</div>
+				</div>
+				<div class="text-right">
+					<button type="submit" class="btn btn-primary">Cari</button>
+				</div>
+			</form>			  
+		</form>
+       	
+    <div th:replace="fragments/fragment :: footer"></div>
+    </body>
+    
+    
+</html>
+

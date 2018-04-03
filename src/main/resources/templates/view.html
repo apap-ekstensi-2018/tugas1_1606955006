@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>View Student by NPM</title>
+    </head>
+    <head th:replace="fragments/fragment :: assets" />
+    <body>
+    <div th:replace="fragments/fragment :: header"></div>
+    	<h3 th:text="'Lihat Data Mahasiswa - ' + ${mahasiswa.npm}">Data Mahasiswa</h3>
+    	
+    	<table style="width:100%">
+		  <tr>
+		    <td><h5>NIK</h5></td>
+		    <td><h5 th:text="${mahasiswa.npm}">NPM Mahasiswa</h5></td>
+		  </tr>
+		  <tr>
+		    <td><h5>Nama</h5></td>
+		    <td><h5 th:text="${mahasiswa.nama}">Nama Mahasiswa</h5></td>
+		  </tr>
+		  <tr>
+		    <td><h5>Tempat/Tanggal Lahir</h5></td>
+		    <td><h5 th:text="${mahasiswa.tempat_lahir} + ' ' + ${mahasiswa.tanggal_lahir}">Tempat/Tanggal Lahir</h5></td>
+		  </tr>
+		  <tr>
+		    <td><h5>Program Studi</h5></td>
+		    <td><h5 th:text="${namaProdi}">Program Studi</h5></td>
+		  </tr>
+		  <tr>
+		    <td><h5>Fakultas</h5></td>
+		    <td><h5 th:text="${namaFakultas}">Fakultas</h5></td>
+		  </tr>
+		  <tr>
+		    <td><h5>Universitas</h5></td>
+		    <td><h5 th:text="${namaUniversitas}">Universitas</h5></td>
+		  </tr>
+		  <tr>
+		    <td><h5>Jenis Kelamin</h5></td>
+		    <td><h5 th:text="${mahasiswa.jenis_kelamin}">Jenis Kelamin</h5></td>
+		  </tr>
+		  <tr>
+		    <td><h5>Agama</h5></td>
+		    <td><h5 th:text="${mahasiswa.agama}">Agama</h5></td>
+		  </tr>
+		  <tr>
+		    <td><h5>Golongan Darah</h5></td>
+		    <td><h5 th:text="${mahasiswa.golongan_darah}">Golongan Darah</h5></td>
+		  </tr>
+		  <tr>
+		    <td><h5>Tahun Masuk</h5></td>
+		    <td><h5 th:text="${mahasiswa.tahun_masuk}">Tahun Masuk</h5></td>
+		  </tr>
+		  <tr>
+		    <td><h5>Jalur Masuk</h5></td>
+		    <td><h5 th:text="${mahasiswa.jalur_masuk}">Jalur Masuk</h5></td>
+		  </tr>
+		  <tr>
+		    <td><h5>Status</h5></td>
+		    <td><h5 th:text="${mahasiswa.status}">Status</h5></td>
+		  </tr>
+		</table>
+		
+		<div>
+			<a th:href="'/mahasiswa/ubah/' + ${mahasiswa.npm}" >Ubah Data</a>
+		</div>
+    <div th:replace="fragments/fragment :: footer"></div>
+    </body>
+    
+    
+</html>
+

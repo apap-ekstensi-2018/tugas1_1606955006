@@ -1,0 +1,12 @@
+<html>
+	<head>
+		<title>Add</title>
+	</head>
+	<head th:replace="fragments/fragment :: assets" />
+	<body>
+	<div th:replace="fragments/fragment :: header"></div>
+		<h2>Success!</h2>
+		<h3 th:text="'Mahasiswa dengan NPM ' + ${mahasiswa.npm} + ' berhasil ditambahkan'">Success</h3>
+	<div th:replace="fragments/fragment :: footer"></div>
+	</body>
+</html>

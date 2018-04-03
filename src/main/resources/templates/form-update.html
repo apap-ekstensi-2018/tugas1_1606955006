@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<head th:replace="fragments/fragment :: assets" />
+<title>Update student</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+<div th:replace="fragments/fragment :: header"></div>
+	<h1 class="page-header">Ubah Mahasiswa</h1>
+
+	<form action="/mahasiswa/ubah/submit" th:object="${mahasiswa}" method="post" style="width:800px">
+		<div class="form-group">
+			<label for="id">ID</label>
+			<input type="text" class="form-control input-sm" name="id" readonly="true" th:value="${mahasiswa.id}" th:field="*{id}" />
+		</div>
+		<div class="form-group">
+			<label for="npm">NPM</label>
+			<input type="text" class="form-control input-sm" name="npm" readonly="true" th:value="${mahasiswa.npm}" th:field="*{npm}" />
+		</div>
+		<div class="form-group">
+			<label for="nama">Nama Lengkap</label>
+			<input type="text" class="form-control input-sm" name="nama" th:value="${mahasiswa.nama}" th:field="*{nama}" />
+		</div>
+		
+		<div class="form-group">
+			<label for="tempat_lahir">Tempat Lahir</label> 
+			<input type="text" class="form-control input-sm" name="tempat_lahir" th:field="*{tempat_lahir}" th:value="${mahasiswa.tempat_lahir}" />
+		</div>
+		
+		<div class="form-group">
+			<label for="tanggal_lahir">Tanggal Lahir</label> 
+			<input type="date" class="form-control input-sm" name="tanggal_lahir" max="2018-03-06" th:field="*{tanggal_lahir}" th:value="${mahasiswa.tanggal_lahir}" />
+		</div>
+		
+		<div class="form-group">
+			<label for="jenis_kelamin">Jenis Kelamin</label>
+			<select class="form-control input-sm" name="jenis_kelamin" th:value="${mahasiswa.jenis_kelamin}" th:field="*{jenis_kelamin}" >
+			    <option hidden="hidden" value="">Jenis Kelamin</option>
+			    <option th:value="0">Laki-Laki</option>
+			    <option th:value="1">Perempuan</option>
+			</select>
+		</div>
+		
+		<div class="form-group">
+			<label for="agama">Agama</label>
+			<select class="form-control input-sm" name="agama" th:value="${mahasiswa.agama}" th:field="*{agama}" >
+			    <option th:value="Konghucu">Konghucu</option>
+			    <option th:value="Protestan">Protestan</option>
+			    <option th:value="Budha">Buddha</option>
+			    <option th:value="Hindu">Hindu</option>
+			    <option th:value="Khatolik">Khatolik</option>
+			    <option th:value="Islam">Islam</option>
+			</select>
+		</div>
+		
+		<div class="form-group">
+			<label for="golongan_darah">Golongan Darah</label>
+			<select class="form-control input-sm" name="golongan_darah" th:value="${mahasiswa.golongan_darah}" th:field="*{golongan_darah}" >
+			    <option hidden="hidden" value="">Pilih Golongan Darah</option>
+			    <option  value="O-">O-</option>
+			    <option value="O+">O+</option>
+			    <option value="A-">A-</option>
+			    <option value="A+">A+</option>
+			    <option value="AB-">AB-</option>
+			    <option value="AB+">AB+</option>
+			    <option value="B-">B-</option>
+			    <option value="B+">B+</option>
+			</select>
+		</div>
+		
+		<div class="form-group">
+			<label for="tahun_masuk">Tahun Masuk</label> 
+			<input type="text" class="form-control input-sm" name="tahun_masuk" th:field="*{tahun_masuk}" th:value="${mahasiswa.tahun_masuk}" />
+		</div>
+		
+		<div class="form-group">
+			<label for="jalur_masuk">Jalur Masuk</label>
+			<select name="jalur_masuk" class="form-control input-sm" th:value="${mahasiswa.jalur_masuk}" th:field="*{jalur_masuk}" >
+				<option hidden="hidden" value="jalur_masuk">Pilih jalur masuk</option>
+				<option value="Undangan Olimpiade">Undangan Olimpiade</option>
+				<option value="Undangan Reguler/SNMPTN">Undangan Reguler/SNMPTN</option>
+				<option value="Undangan Paralel/PPKB">Undangan Paralel/PPKB</option>
+				<option value="Ujian Tulis Bersama/SBMPTN">Ujian Tulis Bersama/SBMPTN</option>
+				<option value="Ujian Tulis Mandiri">Ujian Tulis Mandiri</option>
+			</select>
+		</div>
+		
+		<div class="form-group">
+			<div>
+				<label for="id_prodi">ID Program Studi</label>
+			</div>
+			<input type="text" class="form-control" name="id_prodi" th:field="*{id_prodi}" th:value="${mahasiswa.id_prodi}" />
+		</div>
+
+		<div>
+			<button type="submit" class="btn btn-primary">Save</button>
+		</div>
+	</form>
+<div th:replace="fragments/fragment :: footer"></div>
+</body>
+
+</html>
+

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Home</title>
+    </head>
+    <head th:replace="fragments/fragment :: assets" />
+    <body>
+    <div th:replace="fragments/fragment :: header"></div>
+       	<h1>Presentase kelulusan</h1>
+       	
+       	<form action="/kelulusan/submit" method="get">
+       		<div>
+				<label for="tahun_masuk">Tahun</label>
+				<input type="text" name="tahun_masuk" />
+			</div>
+       		
+			<div>
+				<label for="id_prodi">ID Program Studi</label>
+				<input type="text" name="id_prodi" />
+			</div>
+			
+			<div>
+				<button type="submit" >Lihat</button>
+			</div>
+		</form>
+       	
+    <div th:replace="fragments/fragment :: footer"></div>
+    </body>
+    
+    
+</html>
+
